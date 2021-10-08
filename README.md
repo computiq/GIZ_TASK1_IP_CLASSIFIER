@@ -22,3 +22,13 @@ References:
 [https://www.meridianoutpost.com/resources/articles/IP-classes.php](https://www.meridianoutpost.com/resources/articles/IP-classes.php)
 
 [https://github.com/laith43d/ipcalculator-LZ-](https://github.com/laith43d/ipcalculator-LZ-)
+
+
+python main.py 127.0.0.1/24
+
+Output: Class: A, Designation: Special
+
+
+python main.py 192.168.1.1/24
+
+Output: Class: C, Designation: Private
