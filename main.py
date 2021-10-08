@@ -55,7 +55,7 @@ class Solution:
         if class_name == "D" or class_name == "E" :
           designation = "Special"
         # Special IP:   127.0.0.1 - 127.255.255.255
-        elif address_range == 127 and last_range >= 1:
+        elif address_range == 127 and (last_range >= 1 and last_range <= 255):
             designation = "Special"
 
         print(f"Class: {class_name}, Designation: {designation}")
