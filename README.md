@@ -11,6 +11,8 @@ Task resolution process:
 
 Task 1:
 
+Important Note: No third party packages or libraries are allowed!
+
 Build a command line tool that receives an IP address in the format: x.x.x.x/x, and print the class of the IP address.
 
 Class resolution should contain the following information:
