@@ -7,12 +7,22 @@ import sys
 
 class Solution:
     def __init__(self) -> None:
-        # get the input IP Addres and Information we Need
-        ip = sys.argv[1]
-        ip_range = ip.split(".")
-        address_range = int(ip_range[0])
-        second_range = int(ip_range[1])
-        last_range = int((ip_range[-1].split("/")[0]))
+        # Get the IP Addres and the Information we Need
+
+        try:
+            ip = sys.argv[1]
+        except:
+            ip = input("Enter IP Adress with Formate x.x.x.x/x : ")
+        # Make sure the IP is Valid
+        while True:
+            try:
+                ip_range = ip.split(".")
+                address_range = int(ip_range[0])
+                second_range = int(ip_range[1])
+                last_range = int((ip_range[-1].split("/")[0]))
+                break
+            except:
+                ip = input("Invalid IP Enter IP Adress with Formate x.x.x.x/x : ")
         # Specify defult name for Class name and Designation
         class_name = "Invalid"
         designation = "Invalid"
