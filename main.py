@@ -46,7 +46,6 @@ class Solution :
         self.workingIP = [0, 0, 0, 0]
         self.workingMask = 0
         self.workingMaskInt = [0, 0, 0, 0]
-        # ----------------------------------
 
         # Split user's input based on '/', to separate the IP from the mask
         self.ipmask = givenIP.split('/')
