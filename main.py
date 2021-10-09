@@ -38,8 +38,6 @@ class Solution :
         }
     
     def __init__(self, givenIP = ''):
-        
-        
         # workingValues variable initialization
         self.workingIP = [0, 0, 0, 0]
         self.workingMask = 0
