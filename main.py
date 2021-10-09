@@ -59,7 +59,7 @@ if __name__ == '__main__':
         spp = sp[3].split('/')
         fourth = int(spp[0])
         if len(spp) == 1 :
-            print('11Please enter a valid subnetmask')
+            print('Please enter a valid subnetmask')
             sys.exit()
         else:
             fifth = int(spp[1])
