@@ -1,5 +1,3 @@
-My contribute to solve problem at competition by
-
 Solving the problem at the competition organized by
 GIZ Task 1 - IP address classifier
 
