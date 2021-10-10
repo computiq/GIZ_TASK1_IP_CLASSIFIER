@@ -49,35 +49,35 @@ class Solution:
 
                     if ID1 >= 1 | ID1 <= 127 and ID2 == 0 and ID3 == 0 \
                         and ID4 == 0:
-                        print ('Class: A, Designation: Public')
+                        print('Class: A, Designation: Public')
                     elif ID1 == 10 and ID2 >= 0 | ID2 <= 255 and ID3 \
                         >= 0 | ID3 <= 255 and ID4 >= 0 | ID4 <= 255:
 
-                        print ('Class: A, Designation: Private')
+                        print('Class: A, Designation: Private')
                     elif ID1 == 127 and ID2 >= 0 | ID2 <= 255 and ID3 \
                         >= 0 | ID3 <= 255 and ID4 >= 1 | ID4 <= 255:
 
-                        print ('Class: A, Designation: Special')
+                        print('Class: A, Designation: Special')
                     elif ID1 >= 128 | ID1 <= 191 and ID2 >= 0 | ID2 \
                         <= 255 and ID3 == 0 and ID4 == 0:
 
                     # Class B checking :
 
-                        print ('Class: B, Designation: Public')
+                        print('Class: B, Designation: Public')
                     elif ID1 == 172 and ID2 >= 16 | ID2 <= 31 and ID3 \
                         >= 0 | ID3 <= 255 and ID4 >= 0 | ID4 <= 255:
 
-                        print ('Class: B, Designation: Private')
+                        print('Class: B, Designation: Private')
                     elif ID1 >= 192 | ID1 <= 223 and ID2 >= 0 | ID2 \
                         <= 255 and ID3 >= 0 | ID3 <= 255 and ID4 == 0:
 
                     # Class C checking :
 
-                        print ('Class: C, Designation: Public')
+                        print('Class: C, Designation: Public')
                     elif ID1 == 192 and ID2 == 168 and ID3 >= 0 | ID3 \
                         <= 255 and ID4 >= 0 | ID4 <= 255:
 
-                        print ('Class: C, Designation: Private')
+                        print('Class: C, Designation: Private')
                     elif ID1 >= 224 | ID1 <= 239 and ID2 >= 0 | ID2 \
                         <= 255 and ID3 >= 0 | ID3 <= 255 and ID4 >= 0 \
                         | ID4 <= 255:
@@ -101,7 +101,7 @@ class Solution:
                 print('please enter right value ')
         else:
 
-            print ('/x must be 8-16-24')
+            print('/x must be 8-16-24')
 
 
 IP = Solution.IP_input()
