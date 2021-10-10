@@ -27,7 +27,8 @@ class Solution:
 
 if __name__ == "__main__":
     ip = input('Enter your ip address: ')
-    ip = ip.split(".")
+    ip_slash = ip.split("/")
+    ip = ip_slash[0].split(".")
     ip = [int(i) for i in ip]
 
 #find class
