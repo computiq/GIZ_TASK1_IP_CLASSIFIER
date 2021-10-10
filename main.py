@@ -16,6 +16,14 @@ class Solution:
     else:
         return "E"
 
+ def findDesignation(ip):
+    if(ip[0] == 10 or (ip[0] ==169 and ip[1]==254)or(ip[0] ==172 and(ip[1] >= 16 and ip[1] <= 31))or(ip[0] ==192 and ip[1]==168)):
+        return "Private"
+    elif(ip[0] == 127):
+        return "Special"
+    else:
+        return "Puplic"
+
 
 if __name__ == "__main__":
     ip = input('Enter your ip address: ')
@@ -24,4 +32,5 @@ if __name__ == "__main__":
 
 #find class
 Class = Solution.findClass(ip)
-print(" Class: ",Class,",")
+Designation=Solution.findDesignation(ip)
+print(" Class: ",Class,", Designation: ",Designation)
