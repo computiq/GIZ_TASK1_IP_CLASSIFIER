@@ -1,3 +1,4 @@
+import sys
 
 class Solution:
     def __init__(self, ip_address):
@@ -60,5 +61,7 @@ class Solution:
 
 
 if __name__ == '__main__':
-    s = Solution('192.168.1.1/24')
-    print(s.classify_ip())
+    ip = sys.argv
+    if (len(ip) == 2):
+        s = Solution(ip[1])
+        print(s.classify_ip())    
