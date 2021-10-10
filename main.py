@@ -65,4 +65,6 @@ def validate_range(part, min,max):
         return True
     return False
 
-validate_ip_address(sys.argv[1])
+if len(sys.argv) > 1 :
+    validate_ip_address(sys.argv[1])
+else : print("Please provide a valid ip address")
