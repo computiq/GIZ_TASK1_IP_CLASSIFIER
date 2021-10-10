@@ -52,7 +52,7 @@ class Solution:
 
         print(f'Output: Class: {self.ipClass}, Designation: {self.Designation}')
 
-
+        
 if __name__ == '__main__':
     solution = Solution()
     solution.get_class_designation()
