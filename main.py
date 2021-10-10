@@ -22,16 +22,22 @@ class Solution:
         #the is_multicast property can detects the D class since the subnet of D is multicasting
         if (self.ip.is_multicast):
             self.class_name = 'D'
+            self.designation = "Special"
+
         #and is-reserved does the same as well
         elif (self.ip.is_reserved):
             self.class_name = 'E'
+            self.designation = "Special"
+
         elif (self.ip.is_loopback):
             self.designation = "Special"
         #I assumed all special ips are A class from the example you gave.
             self.class_name = 'A'
+
         #once again, using a property to make life easier
         elif (self.ip.is_private):
             self.designation = "Private"
+
         else:
             self.designation = "Public"
         #and after two days of struggle, we print :D
