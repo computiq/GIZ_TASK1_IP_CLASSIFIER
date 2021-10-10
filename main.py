@@ -8,8 +8,7 @@ class Solution:
         
         while True:
             ip = input("enter IP address in xxx.xxx.xxx.xxx/x format OR enter exit : ")
-            if re.match('^(([01]?\d{1,2}|2[0-4]\d|25[0-5])\.){3}([01]?\d{1,2}|2[0-4]\d|25[0-5])(/([01]?\\d\\d?|2['
-                        '0-4]\\d|25[0-5]))$', ip):
+            if re.match('^(([01]?\d{1,2}|2[0-4]\d|25[0-5])\.){3}([01]?\d{1,2}|2[0-4]\d|25[0-5])(/([12]?[0-9]|3[01]))$', ip):
                 break
             elif ip == 'exit':
                 print('bye bye')
