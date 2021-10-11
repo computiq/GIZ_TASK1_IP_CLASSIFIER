@@ -1,6 +1,5 @@
 from ipaddress import IPv4Address, ip_address 
 import ipaddress
-
 class Solution:
     
     def fragmentip(self,ip) -> None:
@@ -9,6 +8,7 @@ class Solution:
         ip=str(ip)
         cl=""
         des="" #des
+        
         co=0 #count to calc len of ip
         br=0 #var to break the loop 
         for i in ip:
@@ -26,17 +26,14 @@ class Solution:
             else :
                co+=1
                cl+=i
-        return cl,des
+        return cl
     def find(self,p):
         orginal=p
         obj=Solution()
         self.p=p
         ip=obj.fragmentip(p)
-        ipclass=int(ip[0])
-        # ipdes=""
-        # for i in ip:
-        #     ipdes+=i
-        # ipdes=int(ipdes)        
+        ipclass=int(ip)
+       
         ipdes=orginal
         #class A
         if (ipclass>=1) and (ipclass<=127):
@@ -60,11 +57,11 @@ class Solution:
         #class C
         elif (ipclass>=192) and (ipclass<=223):
             
-            if(ipdes>=ip_address("19216800"))and (ipdes<=ip_address("192.168.255.255")):
+            if(ipdes>=ip_address("192.168.0.0"))and (ipdes<=ip_address("192.168.255.255")):
                  print("class C , designated private")
             elif ipdes>=ip_address("192.0.0.0")and ipdes<=ip_address("223.255.255.0"):
                 print("class C , designated public") 
-                print(ipdes)
+                
             else:
                  print("class C , designated Special ")         
    
@@ -72,7 +69,7 @@ class Solution:
 
 
 
-
-ip =ip_address("10.255.255.255")
-obj=Solution()
-obj.find(ip)
+if __name__ == '__main__':
+    obj=Solution()
+    ip=ip_address("192.168.0.0")
+    obj.find(ip)
