@@ -31,11 +31,11 @@ class Solution:
             self.class_ = 'C'
             self.designation = 'Private'
 
-        elif self.ip_dotted[0] == '192':
+        elif self.ip_dotted[0] == '192' or 173 <= int(self.ip_dotted[0]) < 224:
             self.class_ = 'C'
             self.designation = 'Public'
 
-        elif self.ip_dotted[0] == '172':
+        elif self.ip_dotted[0] == '172' or 128 <= int(self.ip_dotted[0]) <= 171:
             self.class_ = 'B'
             self.designation = 'Public'
 
@@ -45,14 +45,6 @@ class Solution:
 
         elif 1 < int(self.ip_dotted[0]) <= 126:
             self.class_ = 'A'
-            self.designation = 'Public'
-
-        elif 128 <= int(self.ip_dotted[0]) <= 171:
-            self.class_ = 'B'
-            self.designation = 'Public'
-
-        elif 173 <= int(self.ip_dotted[0]) < 224:
-            self.class_ = 'C'
             self.designation = 'Public'
 
         elif 224 <= int(self.ip_dotted[0]) <= 255:
