@@ -2,7 +2,8 @@ class Solution:
         def __init__(self, ip):
                 self.ip = ip
         def handleIp(self):
-                try:    
+                try:   
+                    
         # taking the input as a string then convert it to a number
         
                         import sys
@@ -55,12 +56,13 @@ class Solution:
                                 print('Designation: Special')
                         else: print('Designation: Public') 
                 except:
-                    print("IP must be in x.x.x.x/x format")
                     sys.exit()
 
 
 if __name__ == '__main__':
         import sys
-        ipInput = sys.argv[1]
+        ipInput = input("Enter an IP Adress \nor Press 'X' to Exit")
+        if ipInput == 'x' or ipInput == 'X':
+            sys.exit()
         sol = Solution(ipInput)
         sol.handleIp()
