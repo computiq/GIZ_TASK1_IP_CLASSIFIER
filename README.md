@@ -1,36 +1,60 @@
-GIZ Task 1 - IP address classifier
+def findClass(ip):
+    if(ip[0] >= 0 and ip[0] <= 127):
+        return "A"
 
-Task resolution process:
+    elif(ip[0] >=128 and ip[0] <= 191):
+        return "B"
 
-* Fork the repo
-* Clone the forked repo to your local machine
-* Resolve the task
-* Commit your solution
-* Push to GitHub
-* create a pull request
+    elif(ip[0] >= 192 and ip[0] <= 223):
+        return "C"
 
-Task 1:
+    elif(ip[0] >= 224 and ip[0] <= 239):
+        return "D"
 
-Important Note: No third party packages or libraries are allowed!
-
-Build a command line tool that receives an IP address in the format: x.x.x.x/x, and print the class of the IP address.
-
-Class resolution should contain the following information:
-1. IP address class (A, B, C, D, E)
-2. IP address designation (Private, Public, Special)
-
-References:
-
-[https://www.meridianoutpost.com/resources/articles/IP-classes.php](https://www.meridianoutpost.com/resources/articles/IP-classes.php)
-
-[https://github.com/laith43d/ipcalculator-LZ-](https://github.com/laith43d/ipcalculator-LZ-)
+    else:
+        return "E"
 
 
-python main.py 127.0.0.1/24
+def findpps(ip):
+    if(ip[0] == 10 | (ip[0] ==169 & ip[1]==254)|(ip[0] ==172 &(ip[1] >= 16 & ip[1] <= 31))|(ip[0] ==192 & ip[1]==168)):
+        return "Private"
+    elif(ip[0] == 127):
+        return "Special"
+    else:
+        return "Puplic"
 
-Output: Class: A, Designation: Special
+def seperate(ip, className):
+
+    #for class A network
+    if(className == "A"):
+        print("Network Address is : ", ip[0])
+        print("Host Address is : ", ".".join(ip[1:4]))
+
+    #for class B network
+    elif(className == "B"):
+        print("Network Address is : ", ".".join(ip[0:2]))
+        print("Host Address is : ", ".".join(ip[2:4]))
+
+    #for class C network
+    elif(className == "C"):
+        print("Network Address is : ", ".".join(ip[0:3]))
+        print("Host Address is : ", ip[3])
+
+    else:
+        print("In this Class, IP address is not divided into Network and Host ID")
+        print("spestiol")
 
 
-python main.py 192.168.1.1/24
+#driver's code
+if __name__ == "__main__":
 
-Output: Class: C, Designation: Private
+    ip = input('enter ip  ')
+    ip = ip.split(".")
+    ip_2 = ip.split("/")
+    ip = ip_2[0].split(".")
+    ip = [int(i) for i in ip]
+
+Class = findClass(ip)
+print(" Class: ",Class,",")
+pps=findpps(ip)
+print(" Class: ",Class,", P.P.S ",pps)
