@@ -42,76 +42,54 @@ class Solution:
     if int(first_octet) > 255 or int(second_octet) > 255 or int(third_octet) > 255 or int(fourth_octet) > 255:
         invalid()
 
-
     if (mask != 8) and (mask != 16) and (mask != 24):
         invalid()
-
 
     IP_class = ''
     designation = ""
 
-    # def print_class_desgination(IP_class, designation):
-    #     print(f"Class: {IP_class}")
-    #     print(f"Designation: {designation}")
 
-    # def realize_class_desgination(first_octet, second_octet, third_octet, fourth_octet):
-    # class A
-    if (first_octet >= 1) and (first_octet <= 127):
+    if (first_octet == 10):
         IP_class = 'A'
-        if (first_octet == 10):
-            designation = "Private"
-        elif (first_octet < 127):
-            designation = "Public"
-        elif (first_octet == 127) and (second_octet == 0) and (third_octet == 0) and (fourth_octet == 0):
-            designation = "Public"
+        designation = "Private"
 
-    # class B
-    elif (first_octet >= 128) and (first_octet <= 191):
+    elif first_octet == 172 and 16 <= second_octet <= 31:
         IP_class = 'B'
-        if (first_octet == 172) and (second_octet >= 16) and (second_octet <= 31):
-            designation = "Private"
-        elif (first_octet < 191):
-            designation = "Public"
-        elif (first_octet == 191) and (second_octet < 255):
-            designation = "Public"
-        elif (first_octet == 191) and (second_octet == 255) and (third_octet == 0) and (fourth_octet == 0):
-            designation = "Public"
-            
-    # class C
-    elif (first_octet >= 192) and (first_octet <= 223):
+        designation = "Private"
+
+    elif first_octet == 192 and second_octet == 168:
         IP_class = 'C'
-        if (first_octet == 192) and (second_octet == 168):
-            designation = "Private"
-        elif (first_octet == 223) and (second_octet == 255) and (third_octet == 255) and (fourth_octet == 0):
-            designation = "Public"
-        elif (first_octet >= 192) and (first_octet <= 222):
-            designation = "Public"
-
-    # class C, Special
-    elif (first_octet == 127) and (fourth_octet >= 1):
-        designation = "Special"
-
-    # class D
-    elif (first_octet >= 224) and (first_octet <= 239):
+        designation = "Private"
+    
+    # idk how to know if it's Class: C, Desgintion: Special
+    # elif first_octet == 127 and fourth_octet >= 1:
+    #     IP_class = 'C'
+    #     designation = "Special"
+    
+    elif 224 <= first_octet <= 239:
         IP_class = 'D'
         designation = "Special"
     
-    # class E
-    elif (first_octet >= 240) and (first_octet <= 255):
+    elif 240 <= first_octet <= 255:
         IP_class = 'E'
         designation = "Special"
+
+    elif 1 <= first_octet <= 127:
+        IP_class = 'A'
+        designation = "Public"
+
+    elif 128 <= first_octet <= 191:
+        IP_class = 'B'
+        designation = "Public"
+    
+    elif 192 <= first_octet <= 223:
+        IP_class = 'C'
+        designation = "Public"
 
     else:
         invalid()
 
-        # return f"Class: {IP_class} Designation: {designation}"
-
-    # realize_class_desgination(first_octet, second_octet, third_octet, fourth_octet)
-    # print_class_desgination(IP_class, designation)
-
-    # print(realize_class_desgination())
-
-    print(f"Class: {IP_class} Designation: {designation}")
+    print(f"Class: {IP_class}, Designation: {designation}")
 
     if __name__ == '__main__':
         pass
