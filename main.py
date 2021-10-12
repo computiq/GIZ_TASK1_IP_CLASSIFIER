@@ -1,66 +1,75 @@
-class Solution:
-    def __init__(self, give_ip: str = None):
-        ip_subnet = give_ip.split('/')
-        if len(ip_subnet) < 2:
-            raise ValueError
-        ip = ip_subnet[0]
-        subnet = ip_subnet[1]
+"""
+Class A:
+    1.0.0.0
+    the first octet is the important here and it's maximum value is 128 to be in class A
+    and for it to be private the first octet needs to be a ten
 
-        ip_dotted = ip.split('.')
+Class B:
+    128.0.0.0
+    For the IP to be in class B, the first octet should have a minimum value of 128 and a max of up to but
+    not including 192 
+    and for it to be private the fo(first octet) should be 172.16 or 172.31
 
-        if len(ip_dotted) != 4:
-            raise ValueError
+Class C:
+    192.0.0.0
+    the first octet has a minimum value of 192 and a maximum of up to 223
+    and for it to be private the fisrt octet needs to be 192 and the second one should be 168
 
-        if int(subnet) > 32:
-            raise ValueError
+Class D:
+    224.0.0.0
+    the fisrt octet has a minimum value of 224 and a maximum of up to but not including 240
+    Can't be private
 
-        self.ip_dotted = ip_dotted
-        self.class_: str = ''
-        self.designation: str = ''
+Class E:
+    240.0.0.0
+    the first octet needs to have a minimum value of 240 and a maximum of 255
+    Can't be private
 
-    def kill_it(self):
-        if self.ip_dotted[0] == '10':
-            self.class_ = 'A'
-            self.designation = 'Private'
+"""
+import sys
 
-        elif self.ip_dotted[0] == '172' and 16 <= int(self.ip_dotted[1]) <= 31:
-            self.class_ = 'B'
-            self.designation = 'Private'
+def get_class(octets):
+        first_octet = int(octets[0])
+        if first_octet >= 1 and first_octet < 129:
+            return "Class A"
+        elif first_octet >= 128 and first_octet < 192:
+            return "Class B"
+        elif first_octet >= 192 and first_octet < 224:
+            return "Class C"
+        elif first_octet >= 224 and first_octet < 240:
+            return "Class D"
+        elif first_octet >= 240 and first_octet < 256:
+            return "Class E"
 
-        elif self.ip_dotted[0] == '192' and self.ip_dotted[1] == '168':
-            self.class_ = 'C'
-            self.designation = 'Private'
-
-        elif self.ip_dotted[0] == '192' or 173 <= int(self.ip_dotted[0]) < 224:
-            self.class_ = 'C'
-            self.designation = 'Public'
-
-        elif self.ip_dotted[0] == '172' or 128 <= int(self.ip_dotted[0]) <= 171:
-            self.class_ = 'B'
-            self.designation = 'Public'
-
-        elif self.ip_dotted[0] == '127':
-            self.class_ = 'A'
-            self.designation = 'Special'
-
-        elif 1 < int(self.ip_dotted[0]) <= 126:
-            self.class_ = 'A'
-            self.designation = 'Public'
-
-        elif 224 <= int(self.ip_dotted[0]) <= 255:
-            self.class_ = 'D or E'
-            self.designation = 'Special'
-
+def get_designation(octets):
+        if int(octets[0]) == 10:
+            return "Private"
+        elif int(octets[0]) == 127:
+            return "Special"
+        elif int(octets[0]) < 128:
+            return "Public1"
+        elif int(octets[0]) == 172 and int(octets[1]) == 16:
+            return "Private"
+        elif int(octets[0]) < 192:
+            return "Public2"
+        elif int(octets[0]) == 192 and int(octets[1]) == 168:
+            return "Private"
+        elif int(octets[0]) < 224:
+            return "Public"
         else:
-            raise ValueError
+            return "Special"
 
-        return f'class: {self.class_}, designation: {self.designation}'
-
+class Solution():
+    def __init__(self, ip):
+        self.octets = ip.split(".")
+        self.clas = get_class(self.octets)
+        self.designation = get_designation(self.octets)
+        print(self.octets)
 
 if __name__ == '__main__':
-    i = input('Please enter an ip address: x.x.x.x/x\n')
-    try:
-        solution = Solution(i)
-        print(solution.kill_it())
-    except ValueError:
-        print('Please enter a valid address in this format: x.x.x.x/x')
+    if len(sys.argv) != 2:
+        print("Usage: python main.py IP address")
+        exit()
+    ip = Solution(sys.argv[1][:-3])
+    print(ip.clas,", ", ip.designation)
+    pass
