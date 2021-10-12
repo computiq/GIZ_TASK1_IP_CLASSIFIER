@@ -1,4 +1,4 @@
-class Solution(object):
+class Solution():
 
     def __init__(self, givenIP):
         # Split user's input based on '/', to separate the IP from the mask
@@ -9,11 +9,16 @@ class Solution(object):
         # Split IP segments based on '.'
         splitIP = ip_mask[0].split('.')
         splitIP = [int(i) for i in splitIP]
+
+        # print(splitIP) o/p is a list [x,x,x,x]
+
+        # ----------------------------------
+        if len(splitMask) < 2 or not(0 <= int(splitMask) <= 32) or len(splitIP) != 4:
+            raise ValueError
+
         self.splitIP = splitIP
         self.splitMask = splitMask
-        # ----------------------------------
-        if len(splitMask) < 2 or int(splitMask) > 32 or len(splitIP) != 4:
-            raise ValueError
+
     
     def classifyClasses(self):
         if(1 <= self.splitIP[0] <= 127):
@@ -43,7 +48,7 @@ class Solution(object):
 
         elif(224 <= self.splitIP[0] <=255):
             print(" Designation: Special")
-            
+
         else:
             print("Designation: Public")
 
