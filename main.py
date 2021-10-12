@@ -16,35 +16,42 @@ class Solution(object):
             raise ValueError
     
     def classifyClasses(self):
-        if(self.splitIP[0] == 10 and 0 <= self.splitIP[1] <= 255):
-            print("class A, Designation: Private")
-
-        elif(self.splitIP[0] == 172 and 16 <= self.splitIP[1] <= 31):
-            print("class B, Designation: Private")
-
-        elif(self.splitIP[0] == 192 and self.splitIP[1] == 168):
-            print("class C, Designation: Private")
-
-        elif(1 <= self.splitIP[0] <= 127):
-            print("Class A, Designation: Public")    
+        if(1 <= self.splitIP[0] <= 127):
+            print("Class A")    
 
         if(128 <= self.splitIP[0] <= 191):
-            print("class B, Designation: Public")
+            print("class B")
 
         if(192 <= self.splitIP[0] <= 223):
-            print("class C, Designation: Public")
+            print("class C")
 
         if(224 <= self.splitIP[0] <= 239):
-            print("class D, Designation: Special")
+            print("class D")
 
         if(240 <= self.splitIP[0] <= 255):
-            print("class E, Designation: Special")
+            print("class E")
 
+    def classifyDesignation(self):
+        if(self.splitIP[0] == 10 and 0 <= self.splitIP[1] <= 255):
+            print("Designation: Private")
+
+        elif(self.splitIP[0] == 172 and 16 <= self.splitIP[1] <= 31):
+            print("Designation: Private")
+
+        elif(self.splitIP[0] == 192 and self.splitIP[1] == 168):
+            print(" Designation: Private")
+
+        elif(224 <= self.splitIP[0] <=255):
+            print(" Designation: Special")
+            
+        else:
+            print("Designation: Public")
 
 if __name__ == '__main__':
     i = input('Please enter an ip address: x.x.x.x/x\n')
     try:
         solution = Solution(i)
         solution.classifyClasses()
+        solution.classifyDesignation()
     except ValueError:
         print('Please enter a valid address in this format: x.x.x.x/x')
