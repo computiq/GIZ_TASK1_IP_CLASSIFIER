@@ -1,6 +1,7 @@
 class Solution:
     def __init__(self, give_ip: str = None):
         ip_subnet = give_ip.split('/')
+        # Doing something
         if len(ip_subnet) < 2:
             raise ValueError
         ip = ip_subnet[0]
@@ -10,7 +11,7 @@ class Solution:
 
         if len(ip_dotted) != 4:
             raise ValueError
-
+        # Doing nothing
         if int(subnet) > 32:
             raise ValueError
 
