@@ -1,66 +1,44 @@
 class Solution:
-    def __init__(self, give_ip: str = None):
-        ip_subnet = give_ip.split('/')
-        if len(ip_subnet) < 2:
-            raise ValueError
-        ip = ip_subnet[0]
-        subnet = ip_subnet[1]
+ 
+ def ip_Class(ip):
+    if(ip[0] >= 0 and ip[0] <= 127):
+        return "A"
+    elif(ip[0] >=128 and ip[0] <= 191):
+        return "B"
+    elif(ip[0] >= 192 and ip[0] <= 223):
+        return "C"
+    elif(ip[0] >= 224 and ip[0] <= 239):
+        return "D"
+    else:
+        return "E"
 
-        ip_dotted = ip.split('.')
+ def ip_Designation(ip):
+    if(ip[0] == 10):
+        return "Private"
 
-        if len(ip_dotted) != 4:
-            raise ValueError
+    if (ip[0] ==169 and ip[1]==254):
+        return "Private"
 
-        if int(subnet) > 32:
-            raise ValueError
+    if (ip[0] ==172 and(ip[1] >= 16 and ip[1] <= 31)):
+        return 'Private'
 
-        self.ip_dotted = ip_dotted
-        self.class_: str = ''
-        self.designation: str = ''
+    if (ip[0] ==192 and ip[1]==168):
+        return 'Private'
 
-    def kill_it(self):
-        if self.ip_dotted[0] == '10':
-            self.class_ = 'A'
-            self.designation = 'Private'
+    elif(ip[0] == 127):
+        return "Special"
 
-        elif self.ip_dotted[0] == '172' and 16 <= int(self.ip_dotted[1]) <= 31:
-            self.class_ = 'B'
-            self.designation = 'Private'
-
-        elif self.ip_dotted[0] == '192' and self.ip_dotted[1] == '168':
-            self.class_ = 'C'
-            self.designation = 'Private'
-
-        elif self.ip_dotted[0] == '192' or 173 <= int(self.ip_dotted[0]) < 224:
-            self.class_ = 'C'
-            self.designation = 'Public'
-
-        elif self.ip_dotted[0] == '172' or 128 <= int(self.ip_dotted[0]) <= 171:
-            self.class_ = 'B'
-            self.designation = 'Public'
-
-        elif self.ip_dotted[0] == '127':
-            self.class_ = 'A'
-            self.designation = 'Special'
-
-        elif 1 < int(self.ip_dotted[0]) <= 126:
-            self.class_ = 'A'
-            self.designation = 'Public'
-
-        elif 224 <= int(self.ip_dotted[0]) <= 255:
-            self.class_ = 'D or E'
-            self.designation = 'Special'
-
-        else:
-            raise ValueError
-
-        return f'class: {self.class_}, designation: {self.designation}'
+    else:
+        return "Puplic"
 
 
-if __name__ == '__main__':
-    i = input('Please enter an ip address: x.x.x.x/x\n')
-    try:
-        solution = Solution(i)
-        print(solution.kill_it())
-    except ValueError:
-        print('Please enter a valid address in this format: x.x.x.x/x')
+if __name__ == "__main__":
+    ip = input('pleas,enter your ip address in the format: x.x.x.x/x: ')
+    ip_slash = ip.split("/")
+    ip = ip_slash[0].split(".")
+    ip = [int(i) for i in ip]
+
+Class = Solution.ip_Class(ip)
+Designation=Solution.ip_Designation(ip)
+print("The class is: ",Class)
+print("The Designation is: ",Designation)
