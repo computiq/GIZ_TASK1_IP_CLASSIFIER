@@ -22,30 +22,37 @@ class Solution:
         if self.ip_dotted[0] == '10':
             self.class_ = 'A'
             self.designation = 'Private'
+            print('class A designation Private')
 
         elif self.ip_dotted[0] == '172' and 16 <= int(self.ip_dotted[1]) <= 31:
             self.class_ = 'B'
             self.designation = 'Private'
+            print('class B designation Private')
 
         elif self.ip_dotted[0] == '192' and self.ip_dotted[1] == '168':
             self.class_ = 'C'
             self.designation = 'Private'
+            print('class C designation Private')
 
         elif self.ip_dotted[0] == '192' or 173 <= int(self.ip_dotted[0]) < 224:
             self.class_ = 'C'
             self.designation = 'Public'
+            print('class C designation Public')
 
         elif self.ip_dotted[0] == '172' or 128 <= int(self.ip_dotted[0]) <= 171:
             self.class_ = 'B'
             self.designation = 'Public'
+            print('class B and designation Public')
 
         elif self.ip_dotted[0] == '127':
             self.class_ = 'A'
             self.designation = 'Special'
+            print('class A designation Special')
 
         elif 1 < int(self.ip_dotted[0]) <= 126:
             self.class_ = 'A'
             self.designation = 'Public'
+            print('class A and designation Public ')
 
         elif 224 <= int(self.ip_dotted[0]) <= 255:
             self.class_ = 'D or E'
