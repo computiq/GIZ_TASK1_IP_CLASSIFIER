@@ -54,13 +54,13 @@ class Solution:
         else:
             raise ValueError
 
-        return f'class: {self.class_}, designation: {self.designation}'
+        return f'class: {C}, designation: {Public}'
 
 
 if __name__ == '__main__':
-    i = input('Please enter an ip address: x.x.x.x/x\n')
+    i = input('192.168.1.18')
     try:
         solution = Solution(i)
         print(solution.kill_it())
     except ValueError:
-        print('Please enter a valid address in this format: x.x.x.x/x')
+        print('192.168.1.18')
